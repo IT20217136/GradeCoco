@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coconut Grading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        .result {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px auto; /* Adjust the margin for spacing */
+            max-width: 300px;
+            background-color: #f9f9f9;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        /* Style for the final grade */
+        .final-grade {
+            font-size: 24px; /* Adjust the font size as needed */
+            font-weight: bold; /* Optionally, make it bold */
+        }
+
+        /* Style for the table */
+        table {
+            width: 60%; /* Adjust the table width */
+            border-collapse: collapse;
+            margin: 0 auto; /* Center the table horizontally */
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 6px; /* Reduce padding for smaller cells */
+            text-align: center;
+        }
+
+        th {
+            background-color: #f9f9f9;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #0074D9;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Coconut Grading</h1>
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <input type="submit" value="Upload Image" class="button">
+    </form>
+
+
+    {% if result %}
+    <div class="result">
+        <h2>Results:</h2>
+        <p>Color Grade: <strong>{{ result.color_grade }}</strong></p>
+        <br>
+        <p>Size Grade: <strong>{{ result.size_grade }}</strong></p>
+        <br>
+        <!-- Apply the "final-grade" class to the final grade -->
+        <p class="final-grade">Final Grade: <strong>{{ result.final_grade }}</strong></p>
+    </div>
+    {% endif %}
+
+    <!-- Centered table displaying color grade, size grade, and final grade combinations -->
+    <table>
+        <thead>
+            <tr>
+                <th>Color Grade</th>
+                <th>Size Grade</th>
+                <th>Final Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>A</td>
+                <td>S</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>M</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>A</td>
+                <td>L</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>S</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>M</td>
+                <td>B</td>
+            </tr>
+            <tr>
+                <td>B</td>
+                <td>L</td>
+                <td>A</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>S</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>M</td>
+                <td>C</td>
+            </tr>
+            <tr>
+                <td>C</td>
+                <td>L</td>
+                <td>C</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
