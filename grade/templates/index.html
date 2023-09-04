@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coconut Grading</title>
     <style>
         body {
@@ -8,10 +10,40 @@
             
         }
 
+        .green-header {
+            background-color: green;
+            color: white;
+            padding: 8px;
+            
+        }
+
+        .green-header h1 {
+            font-size: 20px; /* Adjust the font size as needed */
+            margin: 0; /* Remove any default margin for the h1 element */
+            text-align: left;
+        }
+
         h1 {
             text-align: center;
         }
 
+        .instructions-tile {
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 40px;
+            max-width: 300px;
+            text-align: left;
+            align-items: center;
+            left: 50%;
+            right: 50%;
+            position: relative;
+            transform: translateX(-50%);
+        }
+
+        .instructions-container {
+            text-align: center;
+            position: relative;
+        }
         form {
             text-align: center;
             margin: 20px auto;
@@ -47,6 +79,7 @@
             margin-top: 20px;
         }
 
+
         th, td {
             border: 1px solid #ccc;
             padding: 6px; /* Reduce padding for smaller cells */
@@ -73,7 +106,20 @@
     </style>
 </head>
 <body>
+    <div class="green-header">
+        <h1>Coco Sale</h1>
+    </div>
     <h1>Coconut Grading</h1>
+
+    <div class="instructions-container">
+        <h2>Instructions:</h2>
+        
+        <ul class="instructions-tile">
+            <li>Place a coconut on a standard A4 sheet.</li>
+            <li>After capturing the image, edit the image to A4 size.</li>
+            <li>Upload the image for grading.</li>
+        </ul>
+    </div>
 
     <form action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" name="image">
