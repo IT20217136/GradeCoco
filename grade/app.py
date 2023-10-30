@@ -1,17 +1,19 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import os
 
 
 from werkzeug.utils import secure_filename
 
 
-app = Flask(__name__)
+app3 = Flask(__name__)
+CORS(app3)
 
 UPLOAD_FOLDER = 'C:/Users/Dell/Documents/Grading Coco/grade/static/uploads'
 ALLOWED_EXTENSIONS = ['jpg', 'jpeg', 'png']
 
 
-@app.route('/')
+@app3.route('/')
 def index():
     return render_template('index.html')
 
@@ -100,8 +102,7 @@ if __name__ == "__main__":
 
 
 
-
-@app.route('/upload', methods=['POST'])
+@app3.route('/upload', methods=['POST'])
 def upload():
     if request.method == 'POST':
         # Check if the file is an image
@@ -125,10 +126,9 @@ def upload():
                 'size_grade': size_grade,
                 'final_grade': final_grade
             }
-            return render_template('index.html', result=result)
+            return jsonify(result)  # Use jsonify to return JSON response
 
     return 'Invalid file'
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app3.run(debug=True,port=5003)
